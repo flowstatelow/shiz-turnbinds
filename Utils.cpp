@@ -58,3 +58,13 @@ bool isCS2WindowActive() {
     GetWindowTextA(hwnd, windowTitle, sizeof(windowTitle));
     return std::string(windowTitle).find("Counter-Strike") != std::string::npos;
 }
+
+std::string exeDirFile(const std::string& name) {
+    char path[MAX_PATH] = {};
+    DWORD n = GetModuleFileNameA(nullptr, path, MAX_PATH);
+    if (n == 0 || n >= MAX_PATH) return name;
+    std::string dir(path, n);
+    size_t slash = dir.find_last_of("\\/");
+    if (slash == std::string::npos) return name;
+    return dir.substr(0, slash + 1) + name;
+}

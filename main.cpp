@@ -24,7 +24,7 @@ int main() {
     timeBeginPeriod(1);
 
     ConsoleUI ui;
-    SettingsManager settings;
+    SettingsManager settings(exeDirFile("settings.json")); // lives next to the exe
     MouseSimulator simulator;
 
     std::atomic<bool> running{ false };

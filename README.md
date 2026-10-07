@@ -11,7 +11,24 @@ with an added **pause hotkey**.
   Rebindable from the console menu (select "Pause key", press Enter, press the new key).
   The overlay turns amber and shows PAUSED, and the console shows the state.
 
-## Build (Windows, Visual Studio 2022 / CMake)
+## Download and run
+
+1. Go to the **Releases** page of this repo and download `Shiz-Turnbinds-windows-x64.zip` (or the bare `.exe`).
+2. Put the exe in any folder you like and run it. No installer, no admin, no extra runtimes.
+3. `settings.json` is created next to the exe the first time you change something.
+
+Windows SmartScreen may say "unknown publisher" because the exe isn't code-signed: click *More info* -> *Run anyway*.
+Some antivirus tools flag any program that sends mouse input; the full source is in this repo.
+
+## Publishing a new release (maintainers)
+
+    git tag v1.0.0
+    git push origin v1.0.0
+
+The GitHub Actions workflow in `.github/workflows/release.yml` builds the exe on a Windows runner and attaches it
+to a new Release automatically.
+
+## Build it yourself (Windows, Visual Studio 2022 / CMake)
 
     cmake -S . -B build -G "Visual Studio 17 2022" -A x64
     cmake --build build --config Release
