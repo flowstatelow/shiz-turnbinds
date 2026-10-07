@@ -4,5 +4,5 @@
 long long performance_counter_frequency();
 long long performance_counter();
 std::string keyToString(int vkCode);
-float clampf(float val, float minVal, float maxVal);
+float clampf(float value, float lo, float hi);
 bool isCS2WindowActive();
